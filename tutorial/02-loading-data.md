@@ -118,9 +118,7 @@ Apollo installation. You can have multiple profiles configured, but we will use
 a single default profile. Run these commands:
 
 ```sh
-apollo config address http://localhost/apollo
-# If you are using Docker to run the Apollo CLI, then instead you need to do:
-# apollo config address http://host.docker.internal/apollo
+apollo config address http://host.docker.internal/apollo
 apollo config accessType root
 apollo config rootPassword password
 apollo login
@@ -142,8 +140,8 @@ is Schistosoma mansoni. Run this command to add the assembly:
 
 ```sh
 apollo assembly add-from-fasta ./data/trichuris_trichiura.PRJEB535.WBPS19.genomic_softmasked.fa.gz \
-    --fai trichuris_trichiura.PRJEB535.WBPS19.genomic_softmasked.fa.gz.fai \
-    --gzi trichuris_trichiura.PRJEB535.WBPS19.genomic_softmasked.fa.gz.gzi \
+    --fai ./data/trichuris_trichiura.PRJEB535.WBPS19.genomic_softmasked.fa.gz.fai \
+    --gzi ./data/trichuris_trichiura.PRJEB535.WBPS19.genomic_softmasked.fa.gz.gzi \
     --assembly 'Trichuris trichiura' \
     --force
 ```
@@ -152,7 +150,7 @@ Now that we have an assembly, let's add the annotations we want to curate. They
 are stored in a GFF3 file. Run this command to import the annotations:
 
 ```sh
-apollo feature import -d -a 'Trichuris trichiura' ./data/trichuris_trichiura.sample.gff3
+apollo feature import --delete-existing --assembly 'Trichuris trichiura' ./data/trichuris_trichiura.sample.gff3
 ```
 
 Next we're going to add a second assembly and set of annotations. This assembly
@@ -166,7 +164,7 @@ apollo assembly add-from-fasta ./data/trichuris_muris.PRJEB126.WBPS19.genomic_so
     --assembly 'Trichuris muris' \
     --force
 
-apollo feature import --delete --assembly 'Trichuris muris' ./data/trichuris_muris.sample.gff3
+apollo feature import --delete-existing --assembly 'Trichuris muris' ./data/trichuris_muris.sample.gff3
 ```
 
 ## Adding evidence tracks
@@ -211,8 +209,6 @@ we know how these files are going to be visible in to JBrowse, and we don't want
 the CLI to try and copy or alter any files.
 
 ```sh
-apollo jbrowse get-config > ./data/config.json
-
 jbrowse add-track \
   data/trichuris_muris_vs_trichuris_trichiura.chr2.paf \
   --load inPlace \
@@ -222,15 +218,12 @@ jbrowse add-track \
   --force
 
 jbrowse add-track \
-  data/TTRE_all_isoseq.bam \
+  data/TTRE_all_isoseq.chr2.bam \
   --load inPlace \
   --name "T. trichiura IsoSeq" \
   --assemblyNames "${TRICHIURA_ID}" \
   --out data/config.json \
   --force
-
-apollo jbrowse set-config data/config.json
-rm ./data/config.json
 ```
 
 Now the last step is to send the updated JBrowse config back to Apollo.
