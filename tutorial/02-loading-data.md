@@ -165,4 +165,4 @@ apollo jbrowse set-config data/config.json
 rm data/config.json
 ```
 
-We can now explore these assemblies and start [annotating](03-annotation.md).
+We can now explore these assemblies and start [annotating](03-annotating.md).
