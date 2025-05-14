@@ -11,23 +11,22 @@ that you can follow if you prefer.
 
 ## Getting the data
 
-First download the
-[demo data](//s3.us-east-1.amazonaws.com/jbrowse.org/apollo/data.zip) used for
-this guide and put it in a directory where you can also put a couple other
-files. For example:
+If you haven't already done so, clone the repository for this workshop:
 
-```sh
-mkdir apollo-demo/
-cd apollo-demo/
-wget https://s3.us-east-1.amazonaws.com/jbrowse.org/apollo/data.zip
-unzip data.zip
-rm data.zip
+```
+git clone https://github.com/glaParaBio/helminth-apollo-workshop-2025
+cd helminth-apollo-workshop-2025
 ```
 
-You'll now have two directories called `data/` and `jbrowse_data/`.
+You'll now have two data directories called `data/` and `jbrowse_data/` and the
+docker configuration file `compose.yml`.
 
 ## Running Apollo
 
 Now in the terminal, run `docker compose up`. You should see a stream of logs
 from the Docker containers. If you do, Apollo is now running! You can use
 <kbd>Ctrl</kbd> + <kbd>C</kbd> in the terminal to stop Apollo when you are done.
+
+Open your web browser and navigate to [http://localhost/](http://localhost/).
+You should see the JBrowse front page and clicking on *Linear genome view* will
+take you to a new session, now empty. Next step is to [load some data](02-loading-data.md).

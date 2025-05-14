@@ -8,10 +8,6 @@ recommended way to install both these tools is through a Node.js package manager
 [the next section](#installing-cli-tools-with-npm-or-yarn) for those
 installation instructions.
 
-If you would rather use Docker to run the CLI tools, it is possible to do so
-with a bit more setup. See
-[this section](#setting-up-docker-to-run-the-cli-tools) for those instructions.
-
 ### Installing CLI tools with `npm` or `yarn`
 
 Use the following to install the Apollo and JBrowse CLI tools.
@@ -26,89 +22,13 @@ this:
 
 ```sh-session
 $ apollo --version
-@apollo-annotation/cli/0.3.4 linux-x64 node-v18.20.4
+@apollo-annotation/cli/0.3.5 linux-x64 node-v22.15.0
 $ jbrowse --version
-@jbrowse/cli/2.18.0 linux-x64 node-v18.20.4
+@jbrowse/cli/3.4.0 linux-x64 node-v22.15.0
 ```
 
 If that worked, you can move on to
 [configuring the Apollo CLI](#configuring-the-apollo-cli).
-
-### Setting up Docker to run the CLI tools
-
-Apollo provides a Docker image of its CLI. In order to configure the Apollo CLI
-in the Docker container, though, you'll need to create a config file for it
-first. For this guide, we'll create an empty file called `config.yml` in a new
-directory.
-
-```sh
-mkdir cli
-touch cli/config.yml
-```
-
-Now we'll create a function that wraps the Docker commands that we need to run
-to avoid having to re-type them. Run the following in your terminal:
-
-```sh
-function apollo() {
-  docker \
-    run \
-    --rm \
-    --interactive \
-    --add-host host.docker.internal=host-gateway \
-    --volume ./cli:/root/.config/apollo-cli \
-    --volume ./data:/data \
-    ghcr.io/gmod/apollo-cli \
-    "$@"
-}
-```
-
-Now run `apollo --version` in your terminal. You should see something like this
-output:
-
-```sh-session
-$ apollo --version
-@apollo-annotation/cli/0.3.4 linux-x64 node-v18.20.4
-```
-
-JBrowse does not provide a Docker image for its CLI, so we'll have to create
-one. Create a file called jbrowse.Dockerfile and paste the following contents
-into it:
-
-```Dockerfile title="jbrowse.Dockerfile"
-FROM node:18-alpine
-RUN mkdir data && yarn global add @jbrowse/cli
-ENTRYPOINT ["jbrowse"]
-```
-
-Now run this command:
-
-```
-docker build --tag jbrowse-cli --file jbrowse.Dockerfile .
-```
-
-When that is done, we'll create a wrapper function like we did for the Apollo
-CLI.
-
-```sh
-function jbrowse() {
-  docker \
-    run \
-    --rm \
-    --interactive \
-    --volume ./data:/data \
-    jbrowse-cli \
-    "$@"
-}
-```
-
-After pasting that into your terminal, run `jbrowse --version` and check that
-the output looks something like this:
-
-```sh-session
-$ jbrowse --version
-@jbrowse/cli/2.18.0 linux-x64 node-v18.20.4
-```
 
 ## Configuring the Apollo CLI
 
@@ -118,7 +38,7 @@ Apollo installation. You can have multiple profiles configured, but we will use
 a single default profile. Run these commands:
 
 ```sh
-apollo config address http://host.docker.internal/apollo
+apollo config address  http://localhost/apollo
 apollo config accessType root
 apollo config rootPassword password
 apollo login
@@ -129,14 +49,12 @@ If you need to log in again, run `apollo logout` first, or use
 
 ## Adding assemblies and annotations
 
-The next step is to add an assembly. We're going to use trimmed-down assembly
-that only includes a single chromosome. This is so that the data is small enough
-to be self-contained inside this repository, without the need for any external
-data.
+### Using the CLI
 
-We are going to use a FASTA file that has been prepared with `bgzip` and
-`samtools` to be compressed and indexed. The organism this assembly belongs to
-is Schistosoma mansoni. Run this command to add the assembly:
+The next step is to add an assembly. The fasta file of the genome of *Trichuris
+trichiura* comes from [WormBase
+Parasite](https://ftp.ebi.ac.uk/pub/databases/wormbase/parasite/releases/WBPS19/species/trichuris_trichiura/PRJEB535/trichuris_trichiura.PRJEB535.WBPS19.genomic_softmasked.fa.gz)
+and it has been compressed with `bgzip` and indexed with `samtools faidx`. To add this assembly run:
 
 ```sh
 apollo assembly add-from-fasta ./data/trichuris_trichiura.PRJEB535.WBPS19.genomic_softmasked.fa.gz \
@@ -147,15 +65,30 @@ apollo assembly add-from-fasta ./data/trichuris_trichiura.PRJEB535.WBPS19.genomi
 ```
 
 Now that we have an assembly, let's add the annotations we want to curate. They
-are stored in a GFF3 file. Run this command to import the annotations:
+are stored in a GFF3 file. Also the GFF3 file comes from [WormBase
+Parasite](https://ftp.ebi.ac.uk/pub/databases/wormbase/parasite/releases/WBPS19/species/trichuris_trichiura/PRJEB535/trichuris_trichiura.PRJEB535.WBPS19.annotations.gff3.gz).
+However to keep the data small we reduced the original file to contain only a
+few hundreds of genes. Run this command to import the annotations (it may take
+a couple of minutes to complete):
 
 ```sh
 apollo feature import --delete-existing --assembly 'Trichuris trichiura' ./data/trichuris_trichiura.sample.gff3
 ```
 
+### Using the graphical interface
+
 Next we're going to add a second assembly and set of annotations. This assembly
-is from the related species Schistosoma haematobium. Run these two commands to
-add the assembly and annotations:
+is from the related species *Trichuris muris*, also from WormBase. Instead of
+the cli, this time we will use the graphical interface. Navigate to
+[http://localhost/](http://localhost/), open the *Linear Genome View*. Then
+from menu Apollo choose "Add Assembly" (refresh the page if option "Add
+Assembly" is not visible). Fill in the submission form with the fasta file and
+the two index files for *T. muris* in the `data` directory. Refresh the page once done.
+
+To add features to this assembly use the dialog form "Import Features" from the
+Apollo menu. Use the gff file `data/trichuris_muris.sample.gff3`.
+
+The corresponding cli commands would be:
 
 ```sh
 apollo assembly add-from-fasta ./data/trichuris_muris.PRJEB126.WBPS19.genomic_softmasked.fa.gz \
@@ -191,10 +124,9 @@ TRICHIURA_ID=$(
 
 In order to make the evidence track data available to JBrowse, the
 `jbrowse_data/` is visible inside our running application as a directory called
-`data/` that is visible to JBrowse. Inside this directory, we have an RNA-seq
-file in CRAM format for each of the assemblies, as well as a file that shows
-synteny relationships between the two assemblies. This particular file was
-generated with `tblastx`.
+`data/` that is visible to JBrowse. Inside this directory, we have an IsoSeq
+file in bam format, as well as a file that shows synteny relationships between
+the two assemblies. This particular file was generated with `tblastx`.
 
 The first step is to get the JBrowse configuration stored in Apollo so we can
 update it. Run these commands:
@@ -232,3 +164,5 @@ Now the last step is to send the updated JBrowse config back to Apollo.
 apollo jbrowse set-config data/config.json
 rm data/config.json
 ```
+
+We can now explore these assemblies and start [annotating](03-annotation.md).
