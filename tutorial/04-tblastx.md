@@ -1,3 +1,5 @@
+# Preparing a synteny track
+
 In this part you will make a synteny track for your own mitochondrial genomes
 in order to assess the quality of the assembly and annotation.
 
@@ -31,7 +33,7 @@ tblastx -query data/trichuris_muris.MITO.fa \
 
 At the moment JBrowse2/Apollo3 cannot read tblastx output directly so we will
 convert it to [paf](https://lh3.github.io/minimap2/minimap2.html#10) format
-with the script [blast2paf.py](scripts/blast2paf.py) provided in this
+with the script [blast2paf.py](../scripts/blast2paf.py) provided in this
 repository. Note that we write the output to the `jbrowse_data` directory since
 this is the directory visible to JBrowse:
 
@@ -41,8 +43,8 @@ cat tblastx/TMUE_MITO_vs_TTRE_MITO.out \
 ```
 
 At this point you should be able to load the synteny track in Apollo together
-with your genomes and annotations using the commands from the previous session.
-For the purpose of exercise we omit these steps.
+with your genomes and annotations using similar commands as in
+[02-loading-data](02-loading-data.md).
 
 <!---
 ```
