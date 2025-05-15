@@ -37,7 +37,7 @@ right-click on the "match" feature and select "Delete feature".
 
 # Using synteny
 
-
+We will now make use of synteny to help deciding what genes should be edited and how. 
 
 # Regions of interest
 
