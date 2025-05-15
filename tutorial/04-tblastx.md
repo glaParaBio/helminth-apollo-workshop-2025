@@ -5,9 +5,9 @@ in order to assess the quality of the assembly and annotation.
 
 The example code here uses `tblastx` to find regions of sequence similarity
 (i.e., putative synteny) between the mitochondrial genomes of the two
-*Trichuris* species. Note that `tblastx` searches translated nucleotide
-database against translated nucleotide query, so it is quite sensitive but slow
-on larger genomes.
+*Trichuris* species used so far. Replace these with your own genomes. Note that
+`tblastx` searches translated nucleotide database against translated nucleotide
+query, so it is quite sensitive but slow on larger genomes.
 
 First prepare a database for one of the two species:
 

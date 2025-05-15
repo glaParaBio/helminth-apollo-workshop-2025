@@ -142,7 +142,7 @@ the CLI to try and copy or alter any files.
 
 ```sh
 jbrowse add-track \
-  data/trichuris_muris_vs_trichuris_trichiura.chr2.paf \
+  data/trichuris_muris_vs_trichuris_trichiura.sample.paf \
   --load inPlace \
   --name "trichuris_muris_vs_trichuris_trichiura TBLASTX" \
   --assemblyNames "${MURIS_ID}","${TRICHIURA_ID}" \

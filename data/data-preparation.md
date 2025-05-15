@@ -25,3 +25,11 @@ rm trichuris_trichiura.PRJEB535.WBPS19.annotations.gff3 trichuris_muris.PRJEB126
 samtools faidx data/trichuris_trichiura.PRJEB535.WBPS19.genomic_softmasked.fa.gz TTRE_MITO > data/trichuris_trichiura.MITO.fa
 samtools faidx data/trichuris_muris.PRJEB126.WBPS19.genomic_softmasked.fa.gz TMUE_MITO > data/trichuris_muris.MITO.fa
 ```
+
+```
+R
+library(data.table)
+paf <- fread('jbrowse_data/trichuris_muris_vs_trichuris_trichiura.chr2.paf')
+paf <- paf[(qstart > 17000000 & qend < 21000000) | (sstart > 10000000 & send < 14000000),]
+fwrite(paf, 'jbrowse_data/trichuris_muris_vs_trichuris_trichiura.sample.paf', sep='\t')
+```
