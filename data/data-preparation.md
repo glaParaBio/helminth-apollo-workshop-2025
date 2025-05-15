@@ -20,3 +20,8 @@ awk '$0 ~ "^#" || $1 == "TTRE_chr2" && $4 > 10695000 && $5 < 13024000' trichuris
 
 rm trichuris_trichiura.PRJEB535.WBPS19.annotations.gff3 trichuris_muris.PRJEB126.WBPS19.annotations.gff3 
 ```
+
+```
+samtools faidx data/trichuris_trichiura.PRJEB535.WBPS19.genomic_softmasked.fa.gz TTRE_MITO > data/trichuris_trichiura.MITO.fa
+samtools faidx data/trichuris_muris.PRJEB126.WBPS19.genomic_softmasked.fa.gz TMUE_MITO > data/trichuris_muris.MITO.fa
+```

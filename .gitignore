@@ -1,4 +1,13 @@
 *.swp
 *.swo
-/cli/
-jbrowse.Dockerfile
+*.nsq
+*.nin
+*.nhr
+*.ndb
+*.nto
+*.not
+*.ntf
+*.njs
+/tblastx/
+config.json
+TTRE_MITO_vs_TMUE_MITO.paf
