@@ -13,7 +13,7 @@ installation instructions.
 Use the following to install the Apollo and JBrowse CLI tools.
 
 ```bash npm2yarn
-npm install -g @apollo-annotation/cli @jbrowse/cli
+npm install -g @apollo-annotation/cli@0.3.5 @jbrowse/cli@3.4.0
 ```
 
 You can test that those commands work by running `apollo --version` and
@@ -72,7 +72,8 @@ few hundreds of genes. Run this command to import the annotations (it may take
 a couple of minutes to complete):
 
 ```sh
-apollo feature import --delete-existing --assembly 'Trichuris trichiura' ./data/trichuris_trichiura.sample.gff3
+apollo feature import --delete-existing \
+    --assembly 'Trichuris trichiura' ./data/trichuris_trichiura.sample.gff3
 ```
 
 ### Using the graphical interface
@@ -83,10 +84,12 @@ the cli, this time we will use the graphical interface. Navigate to
 [http://localhost/](http://localhost/), open the *Linear Genome View*. Then
 from menu Apollo choose "Add Assembly" (refresh the page if option "Add
 Assembly" is not visible). Fill in the submission form with the fasta file and
-the two index files for *T. muris* in the `data` directory. Refresh the page once done.
+the two index files for *T. muris* in the `data` directory. As assembly name use *Trichuris muris*.
+Refresh the page once done.
 
 To add features to this assembly use the dialog form "Import Features" from the
-Apollo menu. Use the gff file `data/trichuris_muris.sample.gff3`.
+Apollo menu. From the dropdown menu choose "Trichuris muris" and select the gff
+file `data/trichuris_muris.sample.gff3`.
 
 The corresponding cli commands would be:
 
@@ -97,7 +100,8 @@ apollo assembly add-from-fasta ./data/trichuris_muris.PRJEB126.WBPS19.genomic_so
     --assembly 'Trichuris muris' \
     --force
 
-apollo feature import --delete-existing --assembly 'Trichuris muris' ./data/trichuris_muris.sample.gff3
+apollo feature import --delete-existing \
+    --assembly 'Trichuris muris' ./data/trichuris_muris.sample.gff3
 ```
 
 ## Adding evidence tracks
