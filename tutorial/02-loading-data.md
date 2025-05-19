@@ -57,9 +57,9 @@ Parasite](https://ftp.ebi.ac.uk/pub/databases/wormbase/parasite/releases/WBPS19/
 and it has been compressed with `bgzip` and indexed with `samtools faidx`. To add this assembly run:
 
 ```sh
-apollo assembly add-from-fasta ./data/trichuris_trichiura.PRJEB535.WBPS19.genomic_softmasked.fa.gz \
-    --fai ./data/trichuris_trichiura.PRJEB535.WBPS19.genomic_softmasked.fa.gz.fai \
-    --gzi ./data/trichuris_trichiura.PRJEB535.WBPS19.genomic_softmasked.fa.gz.gzi \
+apollo assembly add-from-fasta ./data/trichuris_trichiura/trichuris_trichiura.PRJEB535.WBPS19.genomic_softmasked.fa.gz \
+    --fai ./data/trichuris_trichiura/trichuris_trichiura.PRJEB535.WBPS19.genomic_softmasked.fa.gz.fai \
+    --gzi ./data/trichuris_trichiura/trichuris_trichiura.PRJEB535.WBPS19.genomic_softmasked.fa.gz.gzi \
     --assembly 'Trichuris trichiura' \
     --force
 ```
@@ -73,7 +73,7 @@ a couple of minutes to complete):
 
 ```sh
 apollo feature import --delete-existing \
-    --assembly 'Trichuris trichiura' ./data/trichuris_trichiura.sample.gff3
+    --assembly 'Trichuris trichiura' ./data/trichuris_trichiura/trichuris_trichiura.sample.gff3
 ```
 
 ### Using the graphical interface
@@ -89,19 +89,19 @@ Refresh the page once done.
 
 To add features to this assembly use the dialog form "Import Features" from the
 Apollo menu. From the dropdown menu choose "Trichuris muris" and select the gff
-file `data/trichuris_muris.sample.gff3`.
+file `data/trichuris_muris/trichuris_muris.sample.gff3`.
 
 The corresponding cli commands would be:
 
 ```sh
-apollo assembly add-from-fasta ./data/trichuris_muris.PRJEB126.WBPS19.genomic_softmasked.fa.gz \
-    --fai ./data/trichuris_muris.PRJEB126.WBPS19.genomic_softmasked.fa.gz.fai \
-    --gzi ./data/trichuris_muris.PRJEB126.WBPS19.genomic_softmasked.fa.gz.gzi \
+apollo assembly add-from-fasta ./data/trichuris_muris/trichuris_muris.PRJEB126.WBPS19.genomic_softmasked.fa.gz \
+    --fai ./data/trichuris_muris/trichuris_muris.PRJEB126.WBPS19.genomic_softmasked.fa.gz.fai \
+    --gzi ./data/trichuris_muris/trichuris_muris.PRJEB126.WBPS19.genomic_softmasked.fa.gz.gzi \
     --assembly 'Trichuris muris' \
     --force
 
 apollo feature import --delete-existing \
-    --assembly 'Trichuris muris' ./data/trichuris_muris.sample.gff3
+    --assembly 'Trichuris muris' ./data/trichuris_muris/trichuris_muris.sample.gff3
 ```
 
 ## Adding evidence tracks

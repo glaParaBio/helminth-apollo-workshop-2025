@@ -18,7 +18,7 @@ makeblastdb -in data/trichuris_trichiura.MITO.fa -dbtype nucl
 Now perform the blast search. We opt for tabular output with columns suitable
 for later steps:
 
-```
+```sh
 mkdir -p tblastx
 
 HEADER='qaccver qlen qstart qend sstrand saccver slen sstart send nident'
@@ -37,7 +37,7 @@ with the script [blast2paf.py](../scripts/blast2paf.py) provided in this
 repository. Note that we write the output to the `jbrowse_data` directory since
 this is the directory visible to JBrowse:
 
-```
+```sh
 cat tblastx/TMUE_MITO_vs_TTRE_MITO.out \
 | scripts/blast2paf.py > jbrowse_data/TMUE_MITO_vs_TTRE_MITO.paf
 ```

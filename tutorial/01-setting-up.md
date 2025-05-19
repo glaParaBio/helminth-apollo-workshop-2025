@@ -30,3 +30,17 @@ from the Docker containers. If you do, Apollo is now running! You can use
 Open your web browser and navigate to [http://localhost/](http://localhost/).
 You should see the JBrowse front page and clicking on *Linear genome view* will
 take you to a new session, now empty. Next step is to [load some data](02-loading-data.md).
+
+---
+
+> [!NOTE]
+> In case you need to remove the docker components (and data!) associated to Apollo:
+
+```sh
+cont_id=`docker ps -a | grep -P -w 'apollo-local-testing-client|ghcr.io/gmod/apollo-collaboration-server|mongo:7' | cut -f 1 -d ' '`
+docker stop $cont_id
+docker system prune
+docker volume rm $(docker volume ls -qf dangling=true)
+image_id=`docker images -a | grep -P -w 'apollo-local-testing-client|mongo|ghcr.io/gmod/apollo-collaboration-server' | awk '{print $3}'`
+docker rmi -f $image_id
+```
