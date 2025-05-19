@@ -146,18 +146,18 @@ the CLI to try and copy or alter any files.
 
 ```sh
 jbrowse add-track \
-  data/trichuris_muris_vs_trichuris_trichiura.sample.paf \
-  --load inPlace \
-  --name "trichuris_muris_vs_trichuris_trichiura TBLASTX" \
-  --assemblyNames "${MURIS_ID}","${TRICHIURA_ID}" \
-  --out data/config.json \
-  --force
-
-jbrowse add-track \
   data/TTRE_all_isoseq.chr2.bam \
   --load inPlace \
   --name "T. trichiura IsoSeq" \
   --assemblyNames "${TRICHIURA_ID}" \
+  --out data/config.json \
+  --force
+
+jbrowse add-track \
+  data/trichuris_muris_vs_trichuris_trichiura.sample.paf \
+  --load inPlace \
+  --name "trichuris_muris_vs_trichuris_trichiura TBLASTX" \
+  --assemblyNames "${MURIS_ID}","${TRICHIURA_ID}" \
   --out data/config.json \
   --force
 ```

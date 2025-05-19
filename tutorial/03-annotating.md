@@ -67,16 +67,18 @@ and how.
 
 Start a new session by selecting "New session" from the "File" menu.
 
-Select "Linear synteny view" from the dropdown menu. In row 1 select *Trichuris muris*
-and in row 2 *Trichuris trichiura*. Now the radio button "Existing track"
-should be checked and the available track should be
-"trichuris_muris_vs_trichuris_trichiura TBLASTX" that we loaded earlier. Click "Launch".
-The first view is fully zoomed out and saturated with synteny links. Click on
-"Open track selector" for the top track and check Annotation, do the same for
-the bottom track and also check the IsoSeq track.
+Select and launch "Linear synteny view" from the dropdown menu. In row 1 select
+*Trichuris muris* and in row 2 *Trichuris trichiura*. Now the radio button
+"Existing track" should be checked and the available track should be
+"trichuris_muris_vs_trichuris_trichiura TBLASTX" that we loaded earlier. Click
+"Launch".  The first view is fully zoomed out and saturated with synteny links.
+Click on "Open track selector" for the top track and check Annotation, do the
+same for the bottom track and also check the IsoSeq track.
 
-First let's explore some functionalities of the synteny view. In the *T muris*
-search box (the one on the left) go to region TMUE_LG2:18,440,431..18,443,422
+## Navigating the synteny view
+
+First let's explore some functionalities of the synteny view. In the search box of *T. muris*
+(the one on the left) go to region TMUE_LG2:18,440,431..18,443,422
 and you should see a few synteny links. Right-click on one of them and click on
 "Center on feature" to center both track on the region covered by this link. 
 
@@ -85,7 +87,7 @@ Since this view may be too narrow you can zoom out each track inidividually
 click on the the three vertical dots on the left of the search boxes and check
 the option "Link views". Now the zooming will apply to both tracks. 
 
-Note that you clicking and dragging on the synteny track (the one in the
+Note also that clicking and dragging on the synteny track (the one in the
 middle) will move both genome tracks together even if views are unlinked.
 
 After zooming out a few times you will notice that region (approximately)
@@ -99,10 +101,15 @@ not the other.
 Once you are here, you may consider a small adjustment to the UTRs of TTRE6784
 to match the IsoSeq data.
 
-Now search for the *trichiura* gene TTRE6839 and adjust the overall view as you
-see fit. The long CDS on the 3'end of the transcript doesn't seem very
-convincing based on the evidence and we should delete it. These are the steps I
-would suggest, but you can do the same in various ways:
+## Deleting a coding sequence
+
+Now search for the *trichiura* gene TTRE6839 and adjust the overall view in
+order to display the region in *T. muris* syntenic to TTRE6839 (you may need to
+zoom out *T. muris* until the synteny links enter in the coordinate range). 
+
+The long CDS on the 3'end of the transcript doesn't seem very convincing based
+on the IsoSeq evidence and synteny and so we should delete it. These are the
+steps I would suggest, but you can achieve the same in various ways:
 
 * Zoom in on the preceeding CDS, approximately TTRE_chr2:12,165,988..12,166,272
 * Extend this CDS to a suitable stop codon using the IsoSeq as guide (zoom in more as needed)
@@ -113,34 +120,30 @@ would suggest, but you can do the same in various ways:
 * As before, resize transcript and gene accordingly
 * Add an attribute to describe the change
 
-<!---
 # Regions of interest
 
 These are some example genes in *T. trichiura* that probably need some curation:
 
 ```
-TMUE_LG2:19,449,820..19,460,071[rev] TTRE_chr2:12,163,850..12,172,620
+* TMUE_LG2:17,211,180..17,216,769 TTRE_chr2:10,946,675..10,951,590 Add UTR exon to TTRE6749?
 
-TMUE_LG2:18,245,558..18,257,358[rev] TTRE_chr2:11,713,832..11,731,423 consider deleting the short tx
+* TMUE_LG2:18,245,558..18,257,358 TTRE_chr2:11,713,832..11,731,423 consider deleting the short transcript in TTRE2050
 
-TTRE4940 Shorten UTR *
-TTRE688 Extend UTR *
-TTRE6744 Delete *
-TTRE6731 Delete gene *
-TTRE6830 Delete gene *
-TTRE2050 Delete tx TMUE_LG2:18,234,381..18,272,122[rev] TTRE_chr2:11,715,666..11,730,260
-TTRE6749 Add UTR exon also CDS TMUE_LG2:17,211,180..17,216,769[rev] TTRE_chr2:10,946,675..10,951,590
-TTRE6722 TMUE_LG2:18,046,592..18,050,363 TTRE_chr2:10,721,018..10,724,789
-         TMUE_LG2:17,435,215..17,440,152[rev]
-TTRE6839 Shorten CDS TMUE_LG2:19,449,863..19,458,308[rev] TTRE_chr2:12,163,993..12,172,437
-TTRE6847 Add UTR (possibly also CDSs) TMUE_LG2:19,528,245..19,531,940 TTRE_chr2:12,227,640..12,238,090
+* TTRE6731 Delete gene?
+
+* TMUE_LG2:19,528,245..19,531,940 TTRE_chr2:12,227,640..12,238,090 TTRE6847 Add UTR exon? 
+
+* TTRE6830 Delete gene?
+
+* TMUE_LG2:17,435,215..17,440,152 TTRE_chr2:10,721,018..10,724,789 TTRE6722 Trim UTR
 ```
---->
 
-NB: If you want to explore these data by yourself note that to keep the data
-files small we only included genes and synteny links in these intervals:
-
-*T. muris*: TMUE_LG2:17202488-20000820
-
-*T. trichiura*: TTRE_chr2:10695245-13020708
+> [!NOTE]
+> 
+> If you would like to explore note that to keep the
+> files small we only included genes and synteny links in these intervals:
+> 
+> *T. muris*: TMUE_LG2:17202488-20000820
+> 
+> *T. trichiura*: TTRE_chr2:10695245-13020708
 
