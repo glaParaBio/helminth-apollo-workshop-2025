@@ -124,7 +124,6 @@ steps I would suggest, but you can achieve the same in various ways:
 
 These are some example genes in *T. trichiura* that probably need some curation:
 
-```
 * TMUE_LG2:17,211,180..17,216,769 TTRE_chr2:10,946,675..10,951,590 Add UTR exon to TTRE6749?
 
 * TMUE_LG2:18,245,558..18,257,358 TTRE_chr2:11,713,832..11,731,423 consider deleting the short transcript in TTRE2050
@@ -136,7 +135,6 @@ These are some example genes in *T. trichiura* that probably need some curation:
 * TTRE6830 Delete gene?
 
 * TMUE_LG2:17,435,215..17,440,152 TTRE_chr2:10,721,018..10,724,789 TTRE6722 Trim UTR
-```
 
 > [!NOTE]
 > 
