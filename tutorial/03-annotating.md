@@ -138,7 +138,7 @@ These are some example genes in *T. trichiura* that probably need some curation:
 
 > [!NOTE]
 > 
-> If you would like to explore note that to keep the
+> If you would like to explore these data, note that to keep the
 > files small we only included genes and synteny links in these intervals:
 > 
 > *T. muris*: TMUE_LG2:17202488-20000820

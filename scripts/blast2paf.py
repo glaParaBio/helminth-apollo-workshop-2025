@@ -1,16 +1,21 @@
 #!/usr/bin/env python3
 
+import argparse
 import sys
 
-if len(sys.argv) > 1 and ('-h' in sys.argv or '--help' in sys.argv):
-    print("""\
-Convert tabular blast output to paf format. See the code itself for expected
-columns from blast
-USAGE
-cat blast.out | blast2paf.py > blast.paf""")
-    sys.exit(0)
+parser = argparse.ArgumentParser(description= 'Convert tabular blast output to paf format. See the code itself for expected columns from blast')
+parser.add_argument('blast', help= 'Blast output to be converted [%(default)s]', default= '-', nargs= '?')
+parser.add_argument('--version', '-v', action= 'version', version= '%(prog)s 0.1.0')
+args = parser.parse_args()
 
-for line in sys.stdin:
+close_fin = False
+if args.blast == '-':
+    blast = sys.stdin
+else:
+    blast = open(args.blast)
+    close_fin = True
+
+for line in blast:
     if line.startswith('#'):
         continue
     # These are the columns we expect in blast input
@@ -45,3 +50,6 @@ for line in sys.stdin:
     out = [qaccver, qlen, qstart, qend, sstrand, saccver, slen, sstart, send, nident, aln_length, mapq]
     out = '\t'.join([str(x) for x in out])
     print(out)
+if close_fin:
+    blast.close()
+
