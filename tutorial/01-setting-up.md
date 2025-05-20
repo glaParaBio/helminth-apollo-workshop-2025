@@ -1,3 +1,11 @@
+<!-- vim-markdown-toc GFM -->
+
+* [Setting up](#setting-up)
+    * [Getting the data](#getting-the-data)
+    * [Running Apollo](#running-apollo)
+
+<!-- vim-markdown-toc -->
+
 # Setting up
 
 To run this demo, you'll need to have

@@ -1,3 +1,11 @@
+<!-- vim-markdown-toc GFM -->
+
+* [Preparing a synteny track](#preparing-a-synteny-track)
+    * [Running and processing tblastx](#running-and-processing-tblastx)
+    * [Loading to Apollo](#loading-to-apollo)
+
+<!-- vim-markdown-toc -->
+
 # Preparing a synteny track
 
 In this part you will make a synteny track for your own mitochondrial genomes
@@ -9,6 +17,8 @@ The example code here uses `tblastx` to find regions of sequence similarity
 `tblastx` searches translated nucleotide database against translated nucleotide
 query, so it is quite sensitive but slow on larger genomes. A faster but less
 sensitive alternative could use `minimap2`.
+
+## Running and processing tblastx
 
 First prepare a database for one of the two species:
 

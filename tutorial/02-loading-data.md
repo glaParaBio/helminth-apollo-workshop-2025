@@ -1,3 +1,16 @@
+<!-- vim-markdown-toc GFM -->
+
+* [Loading data](#loading-data)
+    * [Setting up the Apollo and JBrowse CLI](#setting-up-the-apollo-and-jbrowse-cli)
+        * [Installing CLI tools with `npm` or `yarn`](#installing-cli-tools-with-npm-or-yarn)
+    * [Configuring the Apollo CLI](#configuring-the-apollo-cli)
+    * [Adding assemblies and annotations](#adding-assemblies-and-annotations)
+        * [Using the CLI](#using-the-cli)
+        * [Using the graphical interface](#using-the-graphical-interface)
+    * [Adding evidence tracks](#adding-evidence-tracks)
+
+<!-- vim-markdown-toc -->
+
 # Loading data
 
 ## Setting up the Apollo and JBrowse CLI
