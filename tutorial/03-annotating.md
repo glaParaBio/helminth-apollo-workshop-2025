@@ -124,17 +124,17 @@ steps I would suggest, but you can achieve the same in various ways:
 
 These are some example genes in *T. trichiura* that probably need some curation:
 
-* TMUE_LG2:17,211,180..17,216,769 TTRE_chr2:10,946,675..10,951,590 Add UTR exon to TTRE6749?
+* TMUE_LG2:17,211,180..17,216,769 (*muris*) TTRE_chr2:10,946,675..10,951,590 (*transcript*): Add UTR exon to TTRE6749?
 
-* TMUE_LG2:18,245,558..18,257,358 TTRE_chr2:11,713,832..11,731,423 consider deleting the short transcript in TTRE2050
+* TMUE_LG2:18,245,558..18,257,358 (*muris*) TTRE_chr2:11,713,832..11,731,423 (*transcript*): consider deleting the short transcript in TTRE2050
 
 * TTRE6731 Delete gene?
 
-* TMUE_LG2:19,528,245..19,531,940 TTRE_chr2:12,227,640..12,238,090 TTRE6847 Add UTR exon? 
+* TMUE_LG2:19,528,245..19,531,940 (*muris*) TTRE_chr2:12,227,640..12,238,090 (*transcript*): Add UTR exon to TTRE6847? 
 
 * TTRE6830 Delete gene?
 
-* TMUE_LG2:17,435,215..17,440,152 TTRE_chr2:10,721,018..10,724,789 TTRE6722 Trim UTR
+* TMUE_LG2:17,435,215..17,440,152 (*muris*) TTRE_chr2:10,721,018..10,724,789 (*transcript*): Trim UTR of TTRE6722 
 
 > [!NOTE]
 > 
