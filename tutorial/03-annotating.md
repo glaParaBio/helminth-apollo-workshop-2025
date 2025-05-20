@@ -1,6 +1,6 @@
-# Exploring annotation 
 <!-- vim-markdown-toc GFM -->
 
+* [Exploring annotation](#exploring-annotation)
     * [Making a UTR shorter](#making-a-utr-shorter)
     * [Making a UTR longer](#making-a-utr-longer)
     * [Deleting a gene](#deleting-a-gene)
@@ -11,6 +11,8 @@
 * [Regions of interest](#regions-of-interest)
 
 <!-- vim-markdown-toc -->
+
+# Exploring annotation 
 
 Navigate your browser to [http://localhost/](http://localhost/) and select
 "Linear Genome View". Then select the *Trichuris trichiura* assembly from the
