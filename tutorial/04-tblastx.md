@@ -39,7 +39,7 @@ repository. Note that we write the output to the `jbrowse_data` directory since
 this is the directory visible to JBrowse:
 
 ```sh
-./scripts/blast2paf.py > jbrowse_data/TMUE_MITO_vs_TTRE_MITO.paf
+./scripts/blast2paf.py tblastx/TMUE_MITO_vs_TTRE_MITO.out > jbrowse_data/TMUE_MITO_vs_TTRE_MITO.paf
 ```
 
 ## Loading to Apollo
@@ -48,10 +48,12 @@ At this point you should be able to load the synteny track in Apollo together
 with your genomes and annotations using similar commands as in
 [02-loading-data](02-loading-data.md). 
 
-However, since mitochondrial genomes have an atypical genetic code, the checks
-built in Apollo may give false positives about missing stop codons, internal
-stop codons, etc. So, after loading your assembly, but before importing
-features, issues this command (replace the assembly name with you own):
+> [!NOTE]
+> Since mitochondrial genomes have an atypical genetic code, the checks built
+> in Apollo may give false positives about missing stop codons, internal stop
+> codons, etc. So, after loading your assembly, but before importing features,
+> instruct Apollo to omit the CDS checks (replace the assembly name with you
+> own):
 
 ```
 apollo assembly check --delete --check CDSCheck --assembly trichuris_muris.MITO
