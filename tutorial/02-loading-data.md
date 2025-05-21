@@ -26,7 +26,7 @@ installation instructions.
 Use the following to install the Apollo and JBrowse CLI tools.
 
 ```bash npm2yarn
-npm install -g @apollo-annotation/cli@0.3.5 @jbrowse/cli@3.4.0
+npm install -g @apollo-annotation/cli@0.3.6 @jbrowse/cli@3.4.0
 ```
 
 You can test that those commands work by running `apollo --version` and
@@ -35,7 +35,7 @@ this:
 
 ```sh-session
 $ apollo --version
-@apollo-annotation/cli/0.3.5 linux-x64 node-v22.15.0
+@apollo-annotation/cli/0.3.6 linux-x64 node-v22.15.0
 $ jbrowse --version
 @jbrowse/cli/3.4.0 linux-x64 node-v22.15.0
 ```
