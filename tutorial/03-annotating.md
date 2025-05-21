@@ -12,7 +12,7 @@
 
 <!-- vim-markdown-toc -->
 
-# Exploring annotation 
+# Exploring annotation
 
 Navigate your browser to [http://localhost/](http://localhost/) and select
 "Linear Genome View". Then select the *Trichuris trichiura* assembly from the
@@ -31,15 +31,13 @@ this position.
 
 You may notice that the 3'UTR of gene TTRE4940
 (TTRE_chr2:10,913,100-10,916,800) extends too far relative to the IsoSeq data.
-Let's fix it by dragging the leftmost edge of the exon to match the IsoSeq
-reads (you may want to zoom into the 3'UTR for a better view). 
+Let's fix it by dragging the rightmost edge of the exon to match the IsoSeq
+reads (you may want to zoom into the 3'UTR for a better view), say 10915729.
 
 We should also resize the underlying transcript and gene to match the new end
 of the UTR. For this, right-click on an intron of this transcript and select
 "Edit feature details".  Edit the "End" of this mRNA to match the end of the
-exon you just edited (you can expand the "Related features" box to see the exon
-coordinates).  From the expand "Related features" box select the parent feature
-(i.e. the gene) and again edit its end coordinate to match the transcript. 
+exon you just edited.
 
 Once we are satisfied with the edits, we may want to add a new attribute to
 this transcript to describe what we did. For this use the "Add new" option
@@ -119,11 +117,26 @@ to match the IsoSeq data.
 
 Now search for the *trichiura* gene TTRE6839 and adjust the overall view in
 order to display the region in *T. muris* syntenic to TTRE6839 (you may need to
-zoom out *T. muris* until the synteny links enter in the coordinate range or just jump to *muris* region `TMUE_LG2:19,447,000..19,461,000[rev]`).
+zoom out *T. muris* until the synteny links enter in the coordinate range or
+just jump to *muris* region `TMUE_LG2:19,447,000..19,461,000[rev]`).
 
 The long CDS on the 3'end of the transcript doesn't seem very convincing based
 on the IsoSeq evidence and synteny and so we should delete it. These are the
 steps I would suggest, but you can achieve the same in various ways:
+
+**For Apollo 0.3.1**
+
+* Zoom in on the preceeding CDS, approximately TTRE_chr2:12,165,988..12,166,272
+* Display the table editor: From the three vertical dots next to *Annotations
+  (Trichuris trichiur)* select "Appearance" and "Show both graphical and table
+  display"
+* Scroll to the row of the last exon of this transcript (the exon with
+  coordinates 12170543-12171479), right-click and delete it.
+* Extend the exon at 12165953-12166098 to match the end of the IsoSeq read. That is, set the end to 12166193
+* On the row of the CDS, reset the end coordinate to a suitable stop codon. Most likely 12166182
+* Also reset the mRNA and gene to the new end coordinate 12166193
+
+**For later versions**
 
 * Zoom in on the preceeding CDS, approximately TTRE_chr2:12,165,988..12,166,272
 * Extend this CDS to a suitable stop codon using the IsoSeq as guide (zoom in more as needed)
