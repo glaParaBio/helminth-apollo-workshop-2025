@@ -119,7 +119,7 @@ to match the IsoSeq data.
 
 Now search for the *trichiura* gene TTRE6839 and adjust the overall view in
 order to display the region in *T. muris* syntenic to TTRE6839 (you may need to
-zoom out *T. muris* until the synteny links enter in the coordinate range). 
+zoom out *T. muris* until the synteny links enter in the coordinate range or just jump to *muris* region `TMUE_LG2:19,447,000..19,461,000[rev]`).
 
 The long CDS on the 3'end of the transcript doesn't seem very convincing based
 on the IsoSeq evidence and synteny and so we should delete it. These are the
