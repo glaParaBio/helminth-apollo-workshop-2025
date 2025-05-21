@@ -128,7 +128,7 @@ steps I would suggest, but you can achieve the same in various ways:
 
 * Zoom in on the preceeding CDS, approximately TTRE_chr2:12,165,988..12,166,272
 * Display the table editor: From the three vertical dots next to *Annotations
-  (Trichuris trichiur)* select "Appearance" and "Show both graphical and table
+  (Trichuris trichiura)* select "Appearance" and "Show both graphical and table
   display"
 * Scroll to the row of the last exon of this transcript (the exon with
   coordinates 12170543-12171479), right-click and delete it.
